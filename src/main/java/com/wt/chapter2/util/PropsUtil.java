@@ -7,6 +7,9 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 属性文件工具类
+ */
 public final class PropsUtil {
     private static final Logger LOGGER=LoggerFactory.getLogger(PropsUtil.class);
 
@@ -77,7 +80,7 @@ public final class PropsUtil {
      * 获取布尔型属性
      */
     public static boolean getBoolean(Properties props,String key){
-        return getInt(props,key,false);
+        return getBoolean(props,key,false);
     }
 
     /**
