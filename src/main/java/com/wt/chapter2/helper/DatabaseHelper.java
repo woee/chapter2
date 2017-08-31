@@ -205,7 +205,6 @@ public final class DatabaseHelper {
      */
     public static void executeSqlFile(String filePath){
         InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePath);
-        LOGGER.info("123");
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         try{
             String sql;

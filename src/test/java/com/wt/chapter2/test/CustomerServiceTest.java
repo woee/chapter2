@@ -28,15 +28,7 @@ public class CustomerServiceTest {
     @Before
     public  void init() throws Exception{
         //初始化数据库
-        String file = "sql/customer_init.sql";
-        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(file);
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        String sql;
-        while ((sql=reader.readLine()) !=null){
-            DatabaseHelper.executeUpdate(sql);
-        }
-
+        DatabaseHelper.executeSqlFile("sql/customer_init.sql");
     }
 
     @Test
