@@ -1,8 +1,14 @@
 package com.wt.chapter2.test;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.wt.chapter2.helper.DatabaseHelper;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,14 +26,23 @@ public class CustomerServiceTest {
     }
 
     @Before
-    public  void init(){
+    public  void init() throws Exception{
         //初始化数据库
+        String file = "sql/customer_init.sql";
+        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(file);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        String sql;
+        while ((sql=reader.readLine()) !=null){
+            DatabaseHelper.executeUpdate(sql);
+        }
+
     }
 
     @Test
     public void getCustomerListTest() throws Exception{
         List<Customer> customerList = customerService.getCustomerList();
-        Assert.assertEquals(2,customerList.size());
+        Assert.assertEquals(3,customerList.size());
     }
 
     @Test
